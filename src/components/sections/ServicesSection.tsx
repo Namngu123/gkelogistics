@@ -1,14 +1,19 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
+import { useWindowSize } from 'react-use'
 import { FaShippingFast, FaGlobeEurope, FaPlane } from 'react-icons/fa'
 import { FiSmartphone } from 'react-icons/fi'
 import { AiOutlineDeliveredProcedure } from "react-icons/ai"
 
 export default function ServicesSection() {
+  const { width, height } = useWindowSize()
+
   const { ref: titleRef, inView: titleInView } = useInView({ threshold: 0.2 })
   const { ref: serviceRef, inView: serviceInView } = useInView({ threshold: 0.2 })
+  const { ref: countRef, inView: countInView } = useInView({ threshold: 0.4 })
 
   return (
     <section
@@ -123,6 +128,50 @@ export default function ServicesSection() {
 
           </div>
         </motion.div>
+
+        {/* Video giới thiệu */}
+        <div className="mt-20 flex justify-center">
+          <div className="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-w-16 aspect-h-9">
+            <video
+              className="w-full h-full rounded-xl shadow-lg object-cover"
+              controls
+              autoPlay
+              loop
+              muted
+            >
+              <source src="/images/video.mp4" type="video/mp4" />
+              Trình duyệt của bạn không hỗ trợ video.
+            </video>
+          </div>
+        </div>
+
+        {/* CountUp số liệu */}
+        <div ref={countRef} className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+          <div>
+            <p className="text-6xl font-extrabold text-[#9E2A2F]">
+              {countInView && <CountUp end={5000} duration={2} />}+
+            </p>
+            <p className="text-gray-700">Đơn hàng</p>
+          </div>
+          <div>
+            <p className="text-6xl font-extrabold text-[#9E2A2F]">
+              {countInView && <CountUp end={98} duration={2} />}%
+            </p>
+            <p className="text-gray-700">Hài lòng</p>
+          </div>
+          <div>
+            <p className="text-6xl font-extrabold text-[#9E2A2F]">
+              {countInView && <CountUp end={20} duration={2} />}+
+            </p>
+            <p className="text-gray-700">Đối tác</p>
+          </div>
+          <div>
+            <p className="text-6xl font-extrabold text-[#9E2A2F]">
+              {countInView && <CountUp end={365} duration={2} />} ngày
+            </p>
+            <p className="text-gray-700">Hoạt động</p>
+          </div>
+        </div>
 
       </div>
     </section>
