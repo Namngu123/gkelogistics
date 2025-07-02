@@ -3,14 +3,12 @@
 import { motion } from 'framer-motion'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
-import { useWindowSize } from 'react-use'
+// import { useWindowSize } from 'react-use' ← Xóa nếu không dùng
 import { FaShippingFast, FaGlobeEurope, FaPlane } from 'react-icons/fa'
 import { FiSmartphone } from 'react-icons/fi'
-import { AiOutlineDeliveredProcedure } from "react-icons/ai"
+import { AiOutlineDeliveredProcedure } from 'react-icons/ai'
 
 export default function ServicesSection() {
-  const { width, height } = useWindowSize()
-
   const { ref: titleRef, inView: titleInView } = useInView({ threshold: 0.2 })
   const { ref: serviceRef, inView: serviceInView } = useInView({ threshold: 0.2 })
   const { ref: countRef, inView: countInView } = useInView({ threshold: 0.4 })
