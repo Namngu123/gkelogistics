@@ -147,7 +147,7 @@ export default function ServicesSection() {
         <div ref={countRef} className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           <div>
             <p className="text-6xl font-extrabold text-[#9E2A2F]">
-              {countInView && <CountUp end={5000} duration={2} />}+
+              {countInView && <CountUp end={100000} duration={2} />}+
             </p>
             <p className="text-gray-700">Đơn hàng</p>
           </div>
